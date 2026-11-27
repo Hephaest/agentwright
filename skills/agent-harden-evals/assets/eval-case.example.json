@@ -1,0 +1,56 @@
+{
+  "id": "login-loop-wrong-owner",
+  "description": "Mobile login loop. A production run skipped the similar-ticket search and posted the wrong owner; a human corrected it.",
+  "set": "capability",
+  "tags": ["login", "mobile", "real-failure", "human-corrected"],
+  "source": {
+    "kind": "production run corrected by a human",
+    "traceId": "<trace id of the production run>",
+    "answerKeyBy": "the support engineer who corrected the triage",
+    "addedOn": "2026-11-20"
+  },
+  "input": {
+    "task": "Triage ticket T-1042.",
+    "fixtures": {
+      "get_ticket": "fixtures/T-1042.json",
+      "search_similar_tickets": "fixtures/similar-tickets.snapshot.json",
+      "search_code": "fixtures/code.snapshot/"
+    },
+    "writeTools": {
+      "post_triage": "recorded into this trial's store; never reaches the live tracker"
+    }
+  },
+  "expected": {
+    "outcome": {
+      "verdict": "CONFIRMED",
+      "suggestedOwner": "mobile-team",
+      "postTriageCalls": 1
+    },
+    "path": {
+      "mustCall": ["get_ticket", "search_similar_tickets", "search_code"],
+      "mustNotCall": [],
+      "approvalBeforeWrite": true,
+      "maxTurns": 12
+    }
+  },
+  "graders": [
+    {
+      "type": "code",
+      "checks": ["post count", "verdict", "suggestedOwner", "mustCall", "mustNotCall", "approvalBeforeWrite", "maxTurns"]
+    },
+    {
+      "type": "model-judge",
+      "question": "Does the evidence the triage cites support its verdict?",
+      "options": {
+        "supported": "Every cited ticket or code location says what the triage claims.",
+        "partly": "Some cited evidence is missing, irrelevant or misread.",
+        "unsupported": "The evidence does not back the verdict, or none is cited."
+      },
+      "passIf": ["supported"],
+      "canFailRun": false,
+      "note": "Set canFailRun to true only after the judge agrees with human grades at the owner's bar."
+    }
+  ],
+  "trials": 3,
+  "referenceSolution": "fixtures/T-1042.reference.json"
+}
