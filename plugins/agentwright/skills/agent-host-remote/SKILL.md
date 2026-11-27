@@ -131,7 +131,7 @@ This comparison is a design judgment; no vendor page settles it.
 
 | Keep, almost unchanged | Rewrite |
 |---|---|
-| The system prompt and house style | Trigger: a webhook, a queue and a scheduler |
+| The system prompt and its writing style | Trigger: a webhook, a queue and a scheduler |
 | Tool definitions and the code behind them | Session: files become rows keyed by thread |
 | Eval cases and their expected answers | Identity: a bot account with scoped tokens, or per-user tokens |
 | The loop, or the SDK that runs it | Approval: a terminal prompt becomes a message and a pending row |

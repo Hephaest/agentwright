@@ -1,0 +1,9 @@
+{
+  "name": "agentwright",
+  "version": "0.1.0",
+  "description": "Vendor-neutral skills for designing, building, hosting and hardening AI agents.",
+  "author": { "name": "Philly Cai" },
+  "license": "MIT",
+  "repository": "https://github.com/Hephaest/agentwright",
+  "keywords": ["agents", "skills", "tool-use", "evals", "guardrails"]
+}

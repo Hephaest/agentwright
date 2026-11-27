@@ -1,0 +1,11 @@
+{
+  "name": "agentwright",
+  "plugins": [
+    {
+      "name": "agentwright",
+      "source": { "source": "local", "path": "./plugins/agentwright" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}

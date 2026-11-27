@@ -1,0 +1,16 @@
+{
+  "name": "agentwright",
+  "owner": {
+    "name": "Philly Cai"
+  },
+  "plugins": [
+    {
+      "name": "agentwright",
+      "source": "./plugins/agentwright",
+      "description": "Vendor-neutral skills for designing, building, hosting and hardening AI agents."
+    }
+  ],
+  "metadata": {
+    "description": "Skills for designing, building, hosting and hardening AI agents."
+  }
+}
